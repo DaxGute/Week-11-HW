@@ -2,7 +2,7 @@ from graphics import *
 
 """
 Description: For Part 4, this program draws a circle recursively. Its main function
-sets up the graphics window and then call a recursive function to draw the objects. 
+sets up the graphics window and then call a recursive function to draw the objects.
 From the recursive drawing a tree of recursively smaller yellow circles are drawn.
 Name: Daxton Gutekunst
 Date: Sep. 25 2021
@@ -14,18 +14,18 @@ def drawCircles(numLoop, center, radius, win):
     of its recursion) sets up the next two circles to be drawn to the top and right of
     the original one. This continues on and on until the numloop iterator reaches 0 where
     the recursive loop stops
-    Parameters: an iterator that keeps track of the number of levels deep the function goes, 
-                the center of the next circle, the radius of the next circle, the window that
-                they will be drawn on
+    Parameters: an iterator that keeps track of the number of levels deep the function goes (int),
+                the center of the next circle (Point Object), the radius of the next circle (int),
+                the window that they will be drawn on (Window Object)
     Return Val: None (just draws the circles)
     """
     if numLoop != 0:
-        # This draws the circle 
+        # This draws the circle
         currentCircle = Circle(center, radius)
         currentCircle.setFill("yellow")
         currentCircle.draw(win)
 
-        #this sets up the next circle 
+        #this sets up the next circle
         newRadius = int(radius/2)
         centerX = center.getX()
         centerY = center.getY()
