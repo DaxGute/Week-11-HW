@@ -1,6 +1,3 @@
-from os import listdir
-from os.path import isdir, expanduser
-
 """
 Description: For Part 3, this progra allows the user to search for filenames containing a given
 pattern in a given directory. It prompts the user to enter a directory to search and a pattern
@@ -9,6 +6,10 @@ contains the given pattern.
 Name: Daxton Gutekunst
 Date: Sep. 25 2021
 """
+
+from os import listdir
+from os.path import isdir, expanduser
+
 
 def fsearch_recursive(path, pattern):
     """
@@ -23,7 +24,7 @@ def fsearch_recursive(path, pattern):
         if isdir(fullpath):
             fsearch_recursive(fullpath, pattern)
         else:
-            if (filename.find(pattern) != -1):
+            if pattern in filename:
                 print(fullpath)
 
 

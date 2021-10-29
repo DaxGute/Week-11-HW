@@ -6,7 +6,7 @@ Name: Daxton Gutekunst
 Date: Sep. 25 2021
 """
 
-def stext_iterative(text, num):
+def repeatText_iterative(text, num):
     """
     Purpose: This function is passed in a string and number. For each charecter in the string
     it is repeated the amount of times the number specifies. This is the test implementation with
@@ -20,7 +20,7 @@ def stext_iterative(text, num):
 
     return newString
 
-def stext_recursive(text, num):
+def repeatText_recursive(text, num):
     """
     Purpose: This function is passed in a string and number. For each charecter in the string
     it is repeated the amount of times the number specifies. This is the recursive implementation
@@ -28,18 +28,31 @@ def stext_recursive(text, num):
     Parameters: the text (str), the number of times each charecter should be repeated (int)
     Return Val: the reformated text (str)
     """
-    if len(text) != 1:
-        newString = stext_recursive(text[1:], num)
-        return text[0:1]*num + newString
-    else:
+    if len(text) == 1:
         return text[0:1]*num
+    else:
+        newString = repeatText_recursive(text[1:], num)
+        return text[0:1]*num + newString
+
+def getNum(): 
+    while True:
+        userInput = input("num: ")
+
+        try: 
+            num = int(userInput)
+            if 0 <= num:
+                return num
+            else:
+                print("Please enter a number greater than or equal to 0!")
+        except:
+            print("Please enter a number!")
 
 
 def main():
     text = input("string: ")
-    num = int(input("num: "))
+    num = getNum()
 
-    print("\nfor_loop: " + stext_iterative(text, num))
-    print("recursive: " + stext_recursive(text, num))
+    print("\nfor_loop: " + repeatText_iterative(text, num))
+    print("recursive: " + repeatText_recursive(text, num))
 
 main()

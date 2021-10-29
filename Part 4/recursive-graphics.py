@@ -1,5 +1,3 @@
-from graphics import *
-
 """
 Description: For Part 4, this program draws a circle recursively. Its main function
 sets up the graphics window and then call a recursive function to draw the objects.
@@ -8,7 +6,40 @@ Name: Daxton Gutekunst
 Date: Sep. 25 2021
 """
 
-def drawCircles(numLoop, center, radius, win):
+from graphics import *
+
+def drawSmiley(center, radius, win):
+    currentCircle = Circle(center, radius)
+    currentCircle.setFill("yellow")
+    currentCircle.draw(win)
+
+    centerX = center.getX()
+    centerY = center.getY()
+
+    eyeYOffset = centerY + (radius/2)
+
+    leftCenterX = centerX - (radius/2)
+    leftEyeCenter = Point(leftCenterX, eyeYOffset)
+    leftEye = Circle(leftEyeCenter, radius/4)
+    leftEye.setFill("red")
+    leftEye.draw(win)
+
+    rightCenterX = centerX + (radius/2)
+    rightEyeCenter = Point(rightCenterX, eyeYOffset)
+    rightEye = Circle(rightEyeCenter, radius/4)
+    rightEye.setFill("blue")
+    rightEye.draw(win)
+
+    lineYOffset = centerY - (radius/3)
+
+    lineLeftX = centerX - (radius/2)
+    leftLineCenter = Point(lineLeftX, lineYOffset)
+    lineRightX = centerX + (radius/2)
+    rightLineCenter = Point(lineRightX, lineYOffset)
+    bottomLine = Line(leftLineCenter, rightLineCenter)
+    bottomLine.draw(win)
+
+def recursiveGraphs(numLoop, center, radius, win):
     """
     Purpose: This program both draws a circle and (provided it hasn't reached the end
     of its recursion) sets up the next two circles to be drawn to the top and right of
@@ -21,9 +52,7 @@ def drawCircles(numLoop, center, radius, win):
     """
     if numLoop != 0:
         # This draws the circle
-        currentCircle = Circle(center, radius)
-        currentCircle.setFill("yellow")
-        currentCircle.draw(win)
+        drawSmiley(center, radius, win)
 
         #this sets up the next circle
         newRadius = int(radius/2)
@@ -31,8 +60,8 @@ def drawCircles(numLoop, center, radius, win):
         centerY = center.getY()
         newTopCenter = Point(centerX, centerY + radius + newRadius)
         newRightCenter = Point(centerX + radius + newRadius, centerY)
-        drawCircles(numLoop-1, newTopCenter, newRadius, win)
-        drawCircles(numLoop-1, newRightCenter, newRadius, win)
+        recursiveGraphs(numLoop-1, newTopCenter, newRadius, win)
+        recursiveGraphs(numLoop-1, newRightCenter, newRadius, win)
 
 
 def main():
@@ -42,7 +71,7 @@ def main():
     win.setCoords(0, 0, 500, 500)
     win.getMouse()
 
-    drawCircles(numLoops, Point(125, 125), 125, win)
+    recursiveGraphs(numLoops, Point(125, 125), 125, win)
 
     win.getMouse()
     win.close()

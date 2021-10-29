@@ -29,26 +29,27 @@ def clean_recursive(text, char):
     Parameters: the text (str), the char that should be eliminated (str)
     Return Val: the reformated text (str)
     """
-    if len(text) != 1:
+    if len(text) == 0:
+        return ""
+    else:
         newString = clean_recursive(text[1:], char)
         if text[0] == char:
             return newString
         else:
             return text[0] + newString
-    else:
-        if text[0] == char:
-            return ""
+       
+def getChar():
+    while True:
+        char = input("ch    : ")
+        if len(char) == 1:
+            return char
         else:
-            return text[0]
-
+            print("Invalid. Please enter a single character")
+        
 
 def main():
     text = input("string: ")
-
-    char = input("ch    : ")
-    while len(char) != 1:
-        print("Invalid. Please enter a single character")
-        char = input("char: ")
+    char = getChar()
 
     print("\nfor_loop: " + clean_iterative(text, char))
     print("recursive: " + clean_recursive(text, char))
