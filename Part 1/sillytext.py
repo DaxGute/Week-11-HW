@@ -31,8 +31,7 @@ def repeatText_recursive(text, num):
     if len(text) == 1:
         return text[0:1]*num
     else:
-        newString = repeatText_recursive(text[1:], num)
-        return text[0:1]*num + newString
+        return text[0:1]*num + repeatText_recursive(text[1:], num)
 
 def getNum(): 
     while True:

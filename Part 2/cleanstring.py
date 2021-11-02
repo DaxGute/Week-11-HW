@@ -32,11 +32,10 @@ def clean_recursive(text, char):
     if len(text) == 0:
         return ""
     else:
-        newString = clean_recursive(text[1:], char)
         if text[0] == char:
-            return newString
+            return clean_recursive(text[1:], char)
         else:
-            return text[0] + newString
+            return text[0] + clean_recursive(text[1:], char)
        
 def getChar():
     while True:
