@@ -20,6 +20,7 @@ def fsearch_recursive(path, pattern):
     Return Val: None (just the print statements)
     """
     for filename in listdir(path):
+        path = path.rstrip("/") #correcting for the discrepancy with the / at the back of expanduser
         fullpath = path + "/" + filename
         if isdir(fullpath):
             fsearch_recursive(fullpath, pattern)
@@ -35,7 +36,7 @@ def main():
         fullPath = expanduser("~/") + fullPath[2:]
 
     print("")
-    # there is in for_loop version as it actually seems that recursive might be the way to go
+    # there isn't a for_loop version as it actually seems that recursive might be the way to go
     fsearch_recursive(fullPath, pattern)
 
 main()
