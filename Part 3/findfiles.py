@@ -1,10 +1,10 @@
 """
-Description: For Part 3, this progra allows the user to search for filenames containing a given
-pattern in a given directory. It prompts the user to enter a directory to search and a pattern
-to look for, then prints the names of all filenames contained within the given directory that
-contains the given pattern.
-Name: Daxton Gutekunst
-Date: Sep. 25 2021
+    Description: For Part 3, this progra allows the user to search for filenames containing a given
+    pattern in a given directory. It prompts the user to enter a directory to search and a pattern
+    to look for, then prints the names of all filenames contained within the given directory that
+    contains the given pattern.
+    Name: Daxton Gutekunst
+    Date: Sep. 25 2021
 """
 
 from os import listdir
@@ -20,7 +20,7 @@ def fsearch_recursive(path, pattern):
     Return Val: None (just the print statements)
     """
     for filename in listdir(path):
-        fullpath = path+"/"+filename
+        fullpath = path + "/" + filename
         if isdir(fullpath):
             fsearch_recursive(fullpath, pattern)
         else:
@@ -32,7 +32,7 @@ def main():
     fullPath = input("path   : ")
     pattern = input("pattern: ")
     if fullPath[0] == "~": # if there a ~, it signals the computer to fill in the path before it
-        fullPath = expanduser("~/")[:-1] + fullPath[1:]
+        fullPath = expanduser("~/") + fullPath[2:]
 
     print("")
     # there is in for_loop version as it actually seems that recursive might be the way to go

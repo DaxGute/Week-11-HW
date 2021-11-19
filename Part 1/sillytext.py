@@ -15,8 +15,8 @@ def repeatText_iterative(text, num):
     Return Val: the reformated text (str)
     """
     newString = ""
-    for i in text:
-        newString += i*num
+    for char in text:
+        newString += char * num
 
     return newString
 
@@ -28,12 +28,17 @@ def repeatText_recursive(text, num):
     Parameters: the text (str), the number of times each charecter should be repeated (int)
     Return Val: the reformated text (str)
     """
-    if len(text) == 1:
-        return text[0:1]*num
+    if len(text) == 0:
+        return ""
     else:
-        return text[0:1]*num + repeatText_recursive(text[1:], num)
+        return (text[:1] * num) + repeatText_recursive(text[1:], num)
 
 def getNum(): 
+    """
+    Purpose: This function gets the integer input of a user and checks that it has the correct format
+    Parameters: None
+    Return Val: Valid input (int)
+    """
     while True:
         userInput = input("num: ")
 

@@ -1,14 +1,21 @@
 """
-Description: For Part 4, this program draws a circle recursively. Its main function
-sets up the graphics window and then call a recursive function to draw the objects.
-From the recursive drawing a tree of recursively smaller yellow circles are drawn.
-Name: Daxton Gutekunst
-Date: Sep. 25 2021
+    Description: For Part 4, this program draws a circle recursively. Its main function
+    sets up the graphics window and then call a recursive function to draw the objects.
+    From the recursive drawing a tree of recursively smaller yellow circles are drawn.
+    Author: Daxton Gutekunst
+    Date: Sep. 25 2021
 """
 
 from graphics import *
 
 def drawSmiley(center, radius, win):
+    """
+    Purpose: This method draws a smiley face out of the given parameters, which vary the 
+    position and size of said smiley. After creating this smiley, it is drawn on the window 
+    Parameters: the center of the smiley to be drawn (Point object), the radius or how big
+                the smiley will be drawn (int), the window (window object)
+    Return Val: None (just draws the circles)
+    """
     currentCircle = Circle(center, radius)
     currentCircle.setFill("yellow")
     currentCircle.draw(win)
@@ -41,8 +48,8 @@ def drawSmiley(center, radius, win):
 
 def recursiveGraphs(numLoop, center, radius, win):
     """
-    Purpose: This program both draws a circle and (provided it hasn't reached the end
-    of its recursion) sets up the next two circles to be drawn to the top and right of
+    Purpose: This program calls a method to draw smileys and (provided it hasn't reached the end
+    of its recursion) sets up the next two smileys to be drawn to the top and right of
     the original one. This continues on and on until the numloop iterator reaches 0 where
     the recursive loop stops
     Parameters: an iterator that keeps track of the number of levels deep the function goes (int),
